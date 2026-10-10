@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: {{ include "swiftcart.fullname" . }}-postgres
+  labels:
+    {{- include "swiftcart.labels" . | nindent 4 }}
+spec:
+  accessModes: [ReadWriteOnce]
+  resources:
+    requests:
+      storage: {{ .Values.postgres.storage | quote }}
+  {{- if .Values.postgres.storageClassName }}
+  storageClassName: {{ .Values.postgres.storageClassName | quote }}
+  {{- end }}

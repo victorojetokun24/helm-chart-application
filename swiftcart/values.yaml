@@ -1,0 +1,41 @@
+replicaCount: 2
+image:
+  repository: swiftcart-api
+  tag: "4.0.0"
+  pullPolicy: IfNotPresent
+app:
+  version: "4.0.0"
+  port: 5000
+  servicePort: 80
+  logLevel: INFO
+  resources:
+    requests:
+      cpu: 100m
+      memory: 128Mi
+    limits:
+      cpu: 500m
+      memory: 256Mi
+service:
+  type: ClusterIP
+ingress:
+  enabled: true
+  className: nginx
+  host: swiftcart.local
+  path: /
+  pathType: Prefix
+postgres:
+  image: postgres:18-alpine
+  database: swiftcart
+  username: swiftcart
+  # CLASSROOM ONLY. Do not use or commit real credentials.
+  password: swiftcartpass
+  port: 5432
+  storage: 1Gi
+  storageClassName: ""
+  resources:
+    requests:
+      cpu: 100m
+      memory: 256Mi
+    limits:
+      cpu: 500m
+      memory: 512Mi

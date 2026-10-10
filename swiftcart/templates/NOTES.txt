@@ -1,0 +1,5 @@
+SwiftCart Helm release {{ .Release.Name }} installed.
+Check: kubectl get all -n {{ .Release.Namespace }}
+Health: http://{{ .Values.ingress.host }}/health
+If Ingress is unavailable:
+  kubectl port-forward service/{{ include "swiftcart.fullname" . }} 8080:{{ .Values.app.servicePort }} -n {{ .Release.Namespace }}

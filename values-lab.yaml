@@ -1,0 +1,6 @@
+replicaCount: 3
+app:
+  logLevel: DEBUG
+ingress:
+  enabled: true
+  host: swiftcart.local

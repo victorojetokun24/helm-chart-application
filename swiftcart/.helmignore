@@ -1,0 +1,1 @@
+*.swp\n*.bak\n*.tmp\n*.pyc\n__pycache__/\n.git/\n.env\n
